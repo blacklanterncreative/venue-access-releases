@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#000000">
+<title>Venue Access</title>
+<link rel="icon" href="../icons/icon-180.png">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<script>window.__VA_SHARE={"fn":"https://wcbrtqftkivmcktmxamz.supabase.co/functions/v1/client-link","key":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndjYnJ0cWZ0a2l2bWNrdG14YW16Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTEzMzcwNDMsImV4cCI6MjEwNjkxMzA0M30.z7HUOFyjxCsSZEXic6zyUNNEengmlo36krWlO0lHk1U"}</script>
+<style>
+:root{--bg:#000;--ink:#fff;--soft:#bdbdbd;--grey:#8a8a8a;--dim:#5c5c5c;--line:#262626;--card:#0b0b0b;--ok:#3ec26b;--warn:#f0a42b;--fail:#ef4b4b;--font:Inter,"Helvetica Neue",Helvetica,Arial,sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 var(--font);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:28px max(16px,env(safe-area-inset-left)) 64px}
+.mark{display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);border-bottom:1px solid var(--line);padding-bottom:12px}
+.mark b{color:var(--ink);font-weight:700}
+.logo{max-height:56px;max-width:180px;margin:28px 0 -8px;display:block}
+h1{font-size:clamp(40px,9vw,96px);line-height:.92;letter-spacing:-.045em;text-transform:uppercase;margin:32px 0 14px;font-weight:700;overflow-wrap:anywhere}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0 24px;border-top:1px solid var(--line);margin-top:22px}
+.facts div{padding:12px 0;border-bottom:1px solid var(--line)}
+.facts span{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)}
+.facts b{font-weight:600}
+.tnote{color:var(--soft);margin:18px 0 0;white-space:pre-line;max-width:70ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0}
+.chip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:13px;color:var(--soft)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--dim);flex:none}
+.dot.ok{background:var(--ok)}.dot.warn{background:var(--warn)}.dot.fail{background:var(--fail)}
+section.sec{margin-top:56px}
+.side{display:grid;grid-template-columns:200px 1fr;gap:24px}
+.side>h2{margin:0;font-size:22px;line-height:1.1;letter-spacing:-.02em;font-weight:700}
+.side>h2 small{display:block;color:var(--grey);font-weight:400;font-size:15px;letter-spacing:0;margin-top:4px}
+@media (max-width:720px){.side{grid-template-columns:1fr;gap:12px}}
+.rows{border-top:1px solid var(--line)}
+.rt{display:grid;grid-template-columns:120px 1fr 1.4fr 110px;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);text-decoration:none}
+a.rt:hover{background:#0d0d0d}
+.rt .d{font-weight:600;white-space:nowrap}
+.rt .c{color:var(--soft)}
+.rt .f{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--soft);white-space:nowrap}
+.rt.off{color:var(--grey)}.rt.off .d{font-weight:400}
+.rt .st{color:var(--warn);font-size:12px;margin-left:6px}
+@media (max-width:720px){.rt{grid-template-columns:86px 1fr auto;row-gap:2px}.rt .c{grid-column:2;grid-row:2;font-size:13px}.rt .v{grid-column:2;grid-row:1}.rt .f{grid-column:3;grid-row:1/3}.rt .f .t{display:none}}
+.show{border-top:1px solid var(--ink);padding-top:18px;scroll-margin-top:12px}
+.show .when{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}
+.show h3{font-size:clamp(28px,5vw,44px);line-height:1;letter-spacing:-.035em;margin:6px 0 4px;font-weight:700;text-transform:uppercase;overflow-wrap:anywhere}
+.show .meta{color:var(--soft)}
+.fit{margin:22px 0 0;padding:14px 16px;border:1px solid var(--line);border-left:3px solid var(--dim);background:var(--card)}
+.fit.ok{border-left-color:var(--ok)}.fit.warn{border-left-color:var(--warn)}.fit.fail{border-left-color:var(--fail)}
+.fit b{display:block;font-weight:600}
+.fit.ok b{color:var(--ok)}.fit.warn b{color:var(--warn)}.fit.fail b{color:var(--fail)}
+.fit ul{margin:8px 0 0;padding-left:18px;color:var(--soft);font-size:14px}
+.pics{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin:18px 0 0}
+.pics figure{margin:0}
+.pics button{all:unset;cursor:zoom-in;display:block;width:100%;background:#050505;border:1px solid var(--line)}
+.pics img{display:block;width:100%;height:auto}
+.pics figcaption{font-size:12px;color:var(--grey);margin-top:6px}
+.big{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0 20px;margin:22px 0 0;border-top:1px solid var(--line)}
+.big div{padding:10px 0;border-bottom:1px solid var(--line)}
+.big span{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)}
+.big b{font-size:22px;letter-spacing:-.02em;font-weight:600}
+.big b.ask{color:var(--dim)}.big b.w{color:var(--warn)}
+.big i{font-style:normal;color:var(--grey);font-size:13px;margin-left:6px}
+details.spec{border-bottom:1px solid var(--line)}
+details.spec:first-of-type{border-top:1px solid var(--line);margin-top:22px}
+details.spec summary{cursor:pointer;list-style:none;padding:12px 0;font-weight:600;display:flex;justify-content:space-between}
+details.spec summary::-webkit-details-marker{display:none}
+details.spec summary::after{content:"+";color:var(--grey);font-weight:400}
+details.spec[open] summary::after{content:"–"}
+.kv{display:grid;grid-template-columns:minmax(120px,38%) 1fr;gap:0 16px;padding:0 0 12px}
+.kv dt,.kv dd{margin:0;padding:6px 0;border-top:1px solid #151515;font-size:14px}
+.kv dt{color:var(--grey)}
+.kv dd .chk{display:inline-block;margin-left:8px;border:1px solid var(--warn);color:var(--warn);font-size:10px;letter-spacing:.08em;padding:0 6px;border-radius:999px;vertical-align:1px}
+.nospec{color:var(--grey);margin-top:18px}
+.legal{margin-top:72px;border-top:1px solid var(--line);padding-top:14px;color:var(--grey);font-size:12px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.msg{min-height:70vh;display:flex;flex-direction:column;justify-content:center}
+.msg h1{font-size:clamp(32px,7vw,64px)}
+.msg p{color:var(--soft);max-width:48ch}
+.load{color:var(--grey);margin-top:40vh;text-align:center;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+dialog{border:0;padding:0;background:transparent;max-width:96vw;max-height:94vh}
+dialog::backdrop{background:rgba(0,0,0,.92)}
+dialog img{max-width:96vw;max-height:86vh;display:block}
+dialog p{color:var(--soft);font-size:13px;margin:8px 0 0;text-align:center}
+.top{position:fixed;right:16px;bottom:max(16px,env(safe-area-inset-bottom));border:1px solid var(--line);background:#000;color:var(--soft);border-radius:999px;padding:8px 14px;font:inherit;font-size:13px;cursor:pointer;display:none}
+.top.on{display:block}
+/* the 3D stage: full screen at the top of the page */
+.s3d{position:relative;height:100vh;height:100svh;min-height:440px;background:#0b0b0b;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}
+.s3d canvas{display:block;width:100%;height:100%;outline:none;cursor:grab}
+.s3d canvas:active{cursor:grabbing}
+.s3d .hud{position:absolute;left:0;right:0;pointer-events:none;padding:0 max(16px,env(safe-area-inset-left))}
+.s3d .hud>*{pointer-events:auto}
+.s3d .hd{top:0;padding-top:max(16px,env(safe-area-inset-top));display:flex;justify-content:space-between;align-items:flex-start;gap:12px;background:linear-gradient(#000c,#0000)}
+.s3d .ttl{min-width:0}
+.s3d .ttl small{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey)}
+.s3d .ttl b{display:block;font-size:clamp(20px,4vw,34px);line-height:1;letter-spacing:-.03em;text-transform:uppercase;margin-top:6px;overflow-wrap:anywhere}
+.s3d .pick{display:flex;align-items:center;gap:6px;flex:none}
+.s3d select,.s3d .nav{font:inherit;font-size:13px;color:var(--ink);background:#000a;border:1px solid #ffffff2e;border-radius:999px;padding:8px 12px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.s3d select{max-width:min(46vw,320px);-webkit-appearance:none;appearance:none;padding-right:28px;background-image:linear-gradient(45deg,transparent 50%,#bbb 50%),linear-gradient(135deg,#bbb 50%,transparent 50%);background-position:calc(100% - 15px) 52%,calc(100% - 10px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+.s3d .nav{width:36px;height:36px;padding:0;cursor:pointer}
+/* what to look at: the stage design by itself, or one of the venues */
+.s3d .pick{position:relative}
+.s3d .chooser{font:inherit;font-size:13px;color:var(--ink);background:#000a;border:1px solid #ffffff2e;border-radius:999px;padding:8px 30px 8px 14px;cursor:pointer;max-width:min(46vw,340px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:left;position:relative;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.s3d .chooser::after{content:"";position:absolute;right:13px;top:50%;width:6px;height:6px;border:solid #bbb;border-width:0 1.5px 1.5px 0;transform:translateY(-70%) rotate(45deg)}
+.s3d .chooser:disabled{cursor:default;padding-right:14px}.s3d .chooser:disabled::after{display:none}
+.s3d .chooser small{color:var(--grey);font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-right:8px}
+.s3d .menu{position:absolute;right:0;top:calc(100% + 8px);width:min(380px,calc(100vw - 32px));max-height:min(70vh,560px);display:flex;flex-direction:column;background:#0a0a0af2;border:1px solid #ffffff2e;border-radius:14px;box-shadow:0 18px 50px #000c;z-index:5;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.s3d .menu[hidden]{display:none}
+.s3d .menu .opt{display:flex;align-items:center;gap:10px;width:100%;font:inherit;text-align:left;color:var(--ink);background:none;border:0;border-radius:9px;padding:9px 10px;cursor:pointer}
+.s3d .menu .opt:hover,.s3d .menu .opt:focus-visible{background:#ffffff14;outline:none}
+.s3d .menu .opt[aria-current=true]{background:#ffffff22}
+.s3d .menu .opt b{display:block;font-weight:600;font-size:14px}
+.s3d .menu .opt span{display:block;font-size:12px;color:var(--grey)}
+.s3d .menu .opt .when{width:74px;flex:none;white-space:nowrap;font-size:12px;color:var(--soft)}
+.s3d .menu .opt>div{min-width:0;flex:1}
+.s3d .menu .opt>div b,.s3d .menu .opt>div span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.s3d .menu .lab{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);padding:12px 12px 6px}
+.s3d .menu .mtop{padding:6px;border-bottom:1px solid #ffffff1a}
+.s3d .menu .list{overflow:auto;padding:0 6px 6px}
+.s3d .menu input{font:inherit;font-size:13px;width:calc(100% - 12px);margin:0 6px 6px;color:var(--ink);background:#000;border:1px solid #ffffff2e;border-radius:8px;padding:8px 10px}
+.s3d .menu .none{color:var(--grey);font-size:13px;padding:10px 12px}
+.s3d .menu .ico{width:30px;height:30px;flex:none;border:1px solid #ffffff3a;border-radius:7px;display:grid;place-items:center;color:var(--soft)}
+.s3d .fitp{display:inline-flex;align-items:center;gap:7px;margin-top:10px;font-size:12px;color:var(--soft);background:#000a;border:1px solid #ffffff22;border-radius:999px;padding:4px 10px}
+.s3d .ft{bottom:0;padding-bottom:max(14px,env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;gap:10px;background:linear-gradient(#0000,#000c)}
+.s3d .views{display:flex;gap:4px;padding:4px;border-radius:999px;background:#000b;border:1px solid #ffffff26;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);max-width:100%;overflow-x:auto;scrollbar-width:none}
+.s3d .views::-webkit-scrollbar{display:none}
+.s3d .views button{font:inherit;font-size:13px;color:var(--soft);background:none;border:0;border-radius:999px;padding:8px 13px;white-space:nowrap;cursor:pointer}
+.s3d .views button:hover{color:var(--ink)}
+.s3d .views button[aria-pressed=true]{background:var(--ink);color:#000}
+.s3d .tip{font-size:11px;color:var(--grey);letter-spacing:.04em}
+.s3d .tip button{font:inherit;color:var(--soft);background:none;border:0;border-bottom:1px solid #555;padding:0;cursor:pointer}
+.s3d .msg3{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--grey);font-size:12px;letter-spacing:.12em;text-transform:uppercase;pointer-events:none}
+.s3d .msg3[hidden]{display:none}
+.go3d{font:inherit;font-size:12px;color:var(--soft);background:none;border:1px solid var(--line);border-radius:999px;padding:5px 12px;cursor:pointer;margin-top:10px}
+.go3d:hover{color:var(--ink);border-color:#555}
+@media (max-width:560px){.s3d .chooser{flex:1;max-width:none}.s3d .menu{left:0;right:0;width:auto}.s3d .tip span{display:none}.s3d .views button{padding:8px 11px}.s3d .hd{flex-direction:column;align-items:stretch;gap:10px}.s3d .pick{width:100%}.s3d select{flex:1;max-width:none}.s3d .ttl b{font-size:24px}}
+.s3d .fitp{white-space:nowrap}
+@media (max-width:560px){.s3d .fitp{white-space:normal}}
+/* production look and layers, bottom left above the views */
+.s3d .lay{position:absolute;left:max(16px,env(safe-area-inset-left));bottom:calc(max(14px,env(safe-area-inset-bottom)) + 92px);display:flex;flex-direction:column;align-items:flex-start;gap:6px;max-width:min(260px,calc(100% - 32px));pointer-events:auto}
+.s3d .lay[hidden]{display:none}
+.s3d .seg{display:flex;gap:2px;padding:3px;border-radius:999px;background:#000b;border:1px solid #ffffff26;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.s3d .seg button{font:inherit;font-size:12px;color:var(--soft);background:none;border:0;border-radius:999px;padding:6px 11px;white-space:nowrap;cursor:pointer}
+.s3d .seg button[aria-pressed=true]{background:var(--ink);color:#000}
+.s3d .lay details{background:#000b;border:1px solid #ffffff26;border-radius:14px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);min-width:150px;max-width:100%}
+.s3d .lay summary{cursor:pointer;list-style:none;padding:7px 12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);display:flex;justify-content:space-between;gap:12px}
+.s3d .lay summary::-webkit-details-marker{display:none}
+.s3d .lay summary::after{content:"+";color:var(--grey)}
+.s3d .lay details[open] summary::after{content:"–"}
+.s3d .lay ul{list-style:none;margin:0;padding:0 6px 6px;max-height:min(38vh,300px);overflow:auto}
+.s3d .lay li label{display:flex;align-items:center;gap:9px;padding:5px 6px;font-size:13px;color:var(--ink);cursor:pointer;border-radius:8px}
+.s3d .lay li label:hover{background:#ffffff12}
+.s3d .lay input{accent-color:#fff;margin:0;flex:none}
+.s3d .lay i{width:10px;height:10px;border-radius:2px;flex:none;border:1px solid #ffffff40}
+.s3d .lay.bw i{background:#fff!important}
+.s3d .lay span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* how a drag moves the camera: orbit or pan, bottom right */
+.s3d .navm{position:absolute;right:max(16px,env(safe-area-inset-right));bottom:calc(max(14px,env(safe-area-inset-bottom)) + 92px);pointer-events:auto}
+.s3d .navm[hidden]{display:none}
+.s3d .navm button svg{width:14px;height:14px;vertical-align:-2px;margin-right:5px;fill:none;stroke:currentColor;stroke-width:1.6}
+@media (max-width:560px){.s3d .navm{bottom:calc(max(14px,env(safe-area-inset-bottom)) + 78px)}.s3d .navm button span{display:none}.s3d .navm button svg{margin:0}}
+@media (max-width:560px){.s3d .lay{bottom:calc(max(14px,env(safe-area-inset-bottom)) + 78px)}.s3d .lay ul{max-height:30vh}}
+@media print{.s3d{display:none}}
+@media print{
+  :root{--bg:#fff;--ink:#000;--soft:#333;--grey:#666;--line:#ccc;--card:#fafafa}
+  .top,.pics button{cursor:default}.show{break-before:page}details.spec .kv{display:grid}
+}
+</style>
+</head>
+<body>
+<section class="s3d" id="s3d" hidden aria-label="3D view of the stage">
+  <div class="msg3" id="s3msg">Loading the stage…</div>
+  <div class="hud hd" id="s3hd"></div>
+  <div class="lay bw" id="s3lay" hidden></div>
+  <div class="seg navm" id="s3nav" role="group" aria-label="Drag to"></div>
+  <div class="hud ft">
+    <div class="views" id="s3views" role="toolbar" aria-label="Camera views"></div>
+    <div class="tip"><span id="s3tip">Drag to orbit · shift-drag or right-drag to pan · scroll to zoom where you point · double-click to look at a spot · </span><button type="button" id="s3down">Tour details ↓</button></div>
+  </div>
+</section>
+<div class="wrap" id="app"><p class="load">Loading…</p></div>
+<button class="top" id="top" type="button" onclick="scrollTo({top:0,behavior:'smooth'})">Back to top</button>
+<dialog id="zoom" onclick="this.close()"><img alt=""><p></p></dialog>
+<script>
+(function () {
+  'use strict';
+  var cfg = window.__VA_SHARE || {};
+  var app = document.getElementById('app');
+  var SEV = { ok: 'Fits', warn: 'Check on advance', fail: "Doesn't fit", none: 'No venue specs yet', nover: 'Fit not checked' };
+  var token = (location.hash || '').slice(1).split(/[\/?&]/)[0];
+
+  function el(tag, attrs) {
+    var e = document.createElement(tag), k;
+    for (k in attrs || {}) { if (attrs[k] == null || attrs[k] === false) continue; if (k === 'text') e.textContent = attrs[k]; else if (k === 'class') e.className = attrs[k]; else if (k.slice(0, 2) === 'on') e[k] = attrs[k]; else e.setAttribute(k, attrs[k]); }
+    for (var i = 2; i < arguments.length; i++) add(e, arguments[i]);
+    return e;
+  }
+  function add(e, c) { if (c == null || c === false) return; if (Array.isArray(c)) c.forEach(function (x) { add(e, x); }); else e.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); }
+  function message(title, text) { document.title = 'Venue Access'; app.replaceChildren(el('div', { class: 'msg' }, el('div', { class: 'mark' }, el('b', { text: 'Venue Access' }), el('span', { text: 'Tour page' })), el('h1', { text: title }), el('p', { text: text }))); }
+  function niceDate(iso) { if (!iso) return ''; var d = new Date(iso); return isNaN(d) ? '' : d.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }); }
+
+  function zoom(p) { var z = document.getElementById('zoom'); z.querySelector('img').src = p.url; z.querySelector('img').alt = p.label || ''; z.querySelector('p').textContent = p.label || ''; z.showModal(); }
+
+  function render(s) {
+    var t = s.tour || {}, shows = s.shows || [];
+    document.title = (t.name || 'Tour') + ' · Venue Access';
+    var real = shows.filter(function (d) { return d.kind === 'show' || !d.kind; });
+    var designOnly = !shows.length && !!s.design;   // a link made for the stage design by itself
+    var count = { ok: 0, warn: 0, fail: 0 };
+    real.forEach(function (d) { if (d.fit && count[d.fit.sev] != null) count[d.fit.sev]++; });
+    var out = [];
+    out.push(el('div', { class: 'mark', id: 'details' }, el('b', { text: 'Venue Access' }), el('span', { text: 'Read only' })));
+    if (t.logo) out.push(el('img', { class: 'logo', src: t.logo, alt: '' }));
+    out.push(el('h1', { text: t.name || 'Tour' }));
+    out.push(el('div', { class: 'facts' },
+      t.artist ? el('div', null, el('span', { text: 'Artist' }), el('b', { text: t.artist })) : null,
+      t.range ? el('div', null, el('span', { text: 'Dates' }), el('b', { text: t.range })) : null,
+      designOnly ? null : el('div', null, el('span', { text: 'Shows' }), el('b', { text: String(real.length) })),
+      (t.production || []).length ? el('div', null, el('span', { text: (t.production.length > 1 ? 'Productions' : 'Production') }), el('b', { text: t.production.join(', ') })) : null));
+    if (t.note) out.push(el('p', { class: 'tnote', text: t.note }));
+    var chip = function (k, n, label) { return n ? el('span', { class: 'chip' }, el('i', { class: 'dot ' + k }), n + ' ' + label) : null; };
+    out.push(el('div', { class: 'chips' }, chip('ok', count.ok, 'fit'), chip('warn', count.warn, 'to check on advance'), chip('fail', count.fail, "don't fit")));
+
+    // routing
+    if (!designOnly) out.push(el('section', { class: 'sec side' }, el('h2', null, 'Routing', el('small', { text: shows.length + ' date' + (shows.length === 1 ? '' : 's') })),
+      el('div', { class: 'rows' }, shows.map(function (d) {
+        if (d.kind && d.kind !== 'show') return el('div', { class: 'rt off' }, el('span', { class: 'd', text: d.day || d.date || '' }), el('span', { class: 'c', text: d.city || '' }), el('span', { class: 'v', text: (d.kindName || d.kind) + (d.note ? ' · ' + d.note : '') }), el('span', { class: 'f' }));
+        var f = d.fit;
+        return el('a', { class: 'rt', href: '#' + token + '/' + d.id, onclick: function (e) { e.preventDefault(); var x = document.getElementById('s-' + d.id); if (x) x.scrollIntoView({ behavior: 'smooth' }); } },
+          el('span', { class: 'd', text: d.day || d.date || '' }), el('span', { class: 'c', text: d.city || '' }),
+          el('span', { class: 'v' }, d.venue || 'Venue to be confirmed', d.status ? el('span', { class: 'st', text: d.status }) : null),
+          el('span', { class: 'f' }, f ? el('i', { class: 'dot ' + f.sev }) : null, f ? el('span', { class: 't', text: SEV[f.sev] === 'Check on advance' ? 'Check' : SEV[f.sev] }) : null));
+      }))));
+
+    // each show
+    real.forEach(function (d) {
+      var f = d.fit, body = [];
+      if (f && f.sev !== 'none') body.push(el('div', { class: 'fit ' + f.sev }, el('b', { text: f.head || SEV[f.sev] }), (f.issues || []).length ? el('ul', null, f.issues.map(function (x) { return el('li', { text: x }); })) : null));
+      if ((d.pics || []).length) body.push(el('div', { class: 'pics' }, d.pics.map(function (p) {
+        return el('figure', null, el('button', { type: 'button', 'aria-label': 'Enlarge: ' + (p.label || 'picture'), onclick: function () { zoom(p); } }, el('img', { src: p.url, alt: p.label || '', loading: 'lazy', width: 1100, height: Math.round(1100 * (p.asp || .6)) })), p.label ? el('figcaption', { text: p.label }) : null);
+      })));
+      if ((d.big || []).length) body.push(el('div', { class: 'big' }, d.big.map(function (r) {
+        return el('div', null, el('span', { text: r[0] }), el('b', { class: r[1] === 'Ask' ? 'ask' : r[3] ? 'w' : null, text: r[1] }), r[2] ? el('i', { text: r[2] }) : null);
+      })));
+      (d.specs || []).forEach(function (g, i) {
+        body.push(el('details', { class: 'spec', open: i === 0 ? '' : null }, el('summary', { text: g[0] }),
+          el('dl', { class: 'kv' }, (g[1] || []).map(function (r) { return [el('dt', { text: r[0] }), el('dd', null, r[1], r[2] ? el('span', { class: 'chk', text: 'CHECK' }) : null)]; }))));
+      });
+      if (!f || f.sev === 'none') body.push(el('p', { class: 'nospec', text: 'Venue specs for this show are still to come.' }));
+      out.push(el('section', { class: 'sec side show', id: 's-' + d.id },
+        el('h2', null, d.day || d.date || '', el('small', { text: d.city || '' })),
+        el('div', null, el('div', { class: 'when', text: [d.status, d.note].filter(Boolean).join(' · ') || 'Show' }), el('h3', { text: d.venue || 'Venue to be confirmed' }), d.city ? el('div', { class: 'meta', text: d.city }) : null,
+          d.scene ? el('button', { class: 'go3d', type: 'button', onclick: function () { if (window.__vaShow3d) window.__vaShow3d(d.id); } }, 'View this show in 3D ↑') : null, body)));
+    });
+
+    out.push(el('div', { class: 'legal' }, el('span', { text: 'Shared from Venue Access' + (s.by ? ' by ' + s.by : '') + (s.published ? ' · updated ' + niceDate(s.published) : '') }),
+      el('span', { text: designOnly ? 'The stage design as shared. It can change.' : 'Venue details come from tech packs and can change. Confirm on advance.' })));
+    app.replaceChildren.apply(app, out);
+    var top = document.getElementById('top');
+    addEventListener('scroll', function () { top.classList.toggle('on', scrollY > 900); }, { passive: true });
+  }
+
+  addEventListener('hashchange', function () { if ((location.hash || '').slice(1).split(/[\/?&]/)[0] !== token) location.reload(); });
+  if (!/^[A-Za-z0-9_-]{32,64}$/.test(token)) { message('Link not complete', 'This link is missing part of its address. Open it again from the message it came in, or ask the person who sent it.'); return; }
+  if (!cfg.fn) { message('Not set up yet', 'This page is not connected to Venue Access yet.'); return; }
+  fetch(cfg.fn, { method: 'POST', headers: { 'Content-Type': 'application/json', apikey: cfg.key || '' }, body: JSON.stringify({ token: token }), cache: 'no-store', referrerPolicy: 'no-referrer' })
+    .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, status: r.status, j: j }; }); })
+    .then(function (r) {
+      if (r.status === 404) return message('Link turned off', (r.j && r.j.error) || "This link isn't on any more. Ask the person who sent it for a new one.");
+      if (!r.ok) return message("Couldn't load", (r.j && r.j.error) || 'Try again in a minute.');
+      render(r.j);
+      window.__vaShareData = r.j; dispatchEvent(new CustomEvent('va-share-ready', { detail: r.j }));
+      var sub = location.hash.split('/')[1]; if (sub) { var x = document.getElementById('s-' + sub); if (x) x.scrollIntoView(); }
+    })
+    .catch(function () { message("Couldn't load", 'Check your connection and try again.'); });
+})();
+</script>
+<script type="importmap">{"imports":{"three":"../vendor/three/build/three.module.js","three/addons/":"../vendor/three/examples/jsm/"}}</script>
+<script type="module">
+// The 3D stage at the top of the page: each show's venue with the production in it, models published from the app.
+// View buttons glide the camera between set positions; drag, scroll and pinch move it freely.
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+const VIEWS = [['wide', 'Overview'], ['foh', 'Front of house'], ['artist', "Artist's view"], ['close', 'On stage'], ['sl', 'Side'], ['top', 'Overhead'], ['balcony', 'Balcony']];
+const SEVN = { ok: 'Fits', warn: 'Check on advance', fail: "Doesn't fit", nover: 'Fit not checked' };
+const $ = id => document.getElementById(id);
+function el(tag, attrs, ...kids) { const e = document.createElement(tag); for (const [k, v] of Object.entries(attrs || {})) { if (v == null || v === false) continue; if (k === 'text') e.textContent = v; else if (k === 'class') e.className = v; else if (k.startsWith('on')) e[k] = v; else e.setAttribute(k, v === true ? '' : v); } e.append(...kids.flat().filter(x => x != null && x !== false)); return e; }
+
+function designOf(src) {
+  const [mn, mx] = src.scene.size, srcH = (src.scene.deck || {}).h || 0;
+  const H = 1.2, pad = 1.5, W = Math.max(mx[0] - mn[0] + pad * 2, 8), D = Math.max(mx[2] - mn[2] + pad, 6);
+  const dx = -(mn[0] + mx[0]) / 2, dy = H - srcH, dz = -mx[2] - .3;   // centred, front of the production just behind the deck edge
+  const at = src.scene.at ? new THREE.Matrix4().makeTranslation(dx, dy, dz).multiply(new THREE.Matrix4().fromArray(src.scene.at)).toArray() : null;
+  const top = mx[1] + dy, fz = Math.max(D * 1.6, 18), c = [0, H + 1.5, -Math.min(D, 9) / 2 - 1];
+  return { id: 'design', design: true, label: 'Stage design only', prod: src.scene.prod, at,
+    scene: { deck: { w: W, d: D, h: H }, size: [[mn[0] + dx, mn[1] + dy, mn[2] + dz], [mx[0] + dx, top, mx[2] + dz]],
+      cams: { foh: [[0, H + 2.5, fz], c], balcony: [[6, Math.max(11, H + 8), fz + 6], c], sl: [[W / 2 + 16, H + 5, -D / 3], c],
+        top: [[0, Math.max(38, W * 1.6), -D / 2 + .01], [0, H, -D / 2]], close: [[-4, H + 1.7, 3.5], [0, H + 1.2, -4]],
+        artist: [[0, H + 2.2, -D * .8], [0, H + .8, Math.max(fz, 12)]] } } };
+}
+// a plain stage: dark floor with a faint grid and a deck sized to the production
+function genericStage(sc) {
+  const g = new THREE.Group(), { w, d, h } = sc.deck;
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), new THREE.MeshStandardMaterial({ color: 0x161616, roughness: 1 }));
+  floor.rotation.x = -Math.PI / 2; g.add(floor);
+  const grid = new THREE.GridHelper(120, 60, 0x2a2a2a, 0x1e1e1e); grid.position.y = .003; g.add(grid);
+  const deck = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), new THREE.MeshStandardMaterial({ color: 0x3a3a3a, roughness: .85 }));
+  deck.position.set(0, h / 2, -d / 2); g.add(deck);
+  const edge = new THREE.LineSegments(new THREE.EdgesGeometry(deck.geometry), new THREE.LineBasicMaterial({ color: 0xbdbdbd })); edge.position.copy(deck.position); g.add(edge);
+  return g;
+}
+
+// the production's look: white with black edges (like a clay model), or each layer in its own colour
+// (flat shaded: models come without normals to keep the files small)
+const WHITE = new THREE.MeshStandardMaterial({ color: 0xe4e4e4, roughness: .8, side: THREE.DoubleSide, flatShading: true, polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 1 });
+const EDGE = new THREE.LineBasicMaterial({ color: 0x141414 });
+const ORIG = new WeakMap(), COLS = new Map();
+const colMat = (c, fig) => { const k = c + (fig ? '/f' : ''); if (!COLS.has(k)) COLS.set(k, new THREE.MeshStandardMaterial({ color: c, roughness: .6, side: THREE.DoubleSide, flatShading: true, transparent: !!fig, opacity: fig ? .7 : 1 })); return COLS.get(k); };
+// once per production model: remember its own materials, draw its edges, list its layers in order
+function prep(root) {
+  if (root.userData.vaLayers) return root.userData.vaLayers;
+  const layers = [], seen = new Set(); let tris = 0;
+  root.traverse(o => {
+    if (!o.isMesh) return;
+    ORIG.set(o.geometry, o.material);
+    const L = o.userData.layer; if (L && !seen.has(L)) { seen.add(L); layers.push([L, o.userData.col || '#bdbdbd']); }
+    if (o.userData.fig || (o.material && o.material.transparent)) return;
+    const g = o.geometry, n = (g.index ? g.index.count : g.attributes.position.count) / 3;
+    if (tris + n > 1.5e6) return;   // very heavy models: edges on the first part only, to stay smooth on phones
+    tris += n;
+    const e = new THREE.LineSegments(new THREE.EdgesGeometry(g, 30), EDGE); e.userData.edge = true; e.raycast = () => {}; o.add(e);
+  });
+  return (root.userData.vaLayers = layers);
+}
+
+function start(data) {
+  const venues = (data.shows || []).filter(d => d.scene && d.scene.venue);
+  // "Stage design only": the production on a plain stage with no venue around it, from a link made for the design
+  // by itself, or else from the first show that has the production
+  const src = data.design && data.design.prod && data.design.size ? { scene: data.design } : venues.find(d => d.scene.prod && d.scene.size);
+  if (!venues.length && !src) return;
+  const shows = src ? [designOf(src), ...venues] : venues;
+  let gl = null;
+  try { gl = document.createElement('canvas').getContext('webgl2') || document.createElement('canvas').getContext('webgl'); } catch {}
+  if (!gl) return;
+  const host = $('s3d'); host.hidden = false;
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+  renderer.domElement.setAttribute('tabindex', '0'); renderer.domElement.setAttribute('aria-label', '3D stage. Drag to look around.');
+  host.prepend(renderer.domElement);
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x0b0b0b);
+  scene.fog = new THREE.Fog(0x0b0b0b, 80, 260);
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.05, 900);
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true; controls.dampingFactor = .08; controls.maxPolarAngle = Math.PI * .495; controls.minDistance = .6; controls.maxDistance = 320;
+  controls.screenSpacePanning = true; controls.autoRotateSpeed = .6; controls.zoomToCursor = true;
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x3a3a3a, 1.7));
+  const key = new THREE.DirectionalLight(0xffffff, 1.5); key.position.set(12, 30, 24); scene.add(key);
+  const rim = new THREE.DirectionalLight(0xdadada, .6); rim.position.set(-18, 14, -22); scene.add(rim);
+  const world = new THREE.Group(); scene.add(world);
+  const loader = new GLTFLoader(), cache = new Map();
+  const load = url => { if (!cache.has(url)) cache.set(url, loader.loadAsync(url).then(g => g.scene)); return cache.get(url); };
+
+  function size() { const r = host.getBoundingClientRect(); if (!r.width) return; renderer.setSize(r.width, r.height, false); camera.aspect = r.width / Math.max(1, r.height); camera.updateProjectionMatrix(); }
+  new ResizeObserver(size).observe(host); size();
+
+  // camera moves: a smooth glide, stopped by any touch or drag
+  let fly = null, cur = null, idx = 0, view = 'foh', job = 0, prodG = null, prodUrl = null;
+  const look = { mode: 'bw', off: new Set() };
+  function applyLook() {
+    $('s3lay').classList.toggle('bw', look.mode === 'bw');
+    if (!prodG) return;
+    prodG.traverse(o => {
+      if (o.userData.edge) { o.visible = look.mode === 'bw'; return; }
+      if (!o.isMesh) return;
+      o.visible = !o.userData.layer || !look.off.has(o.userData.layer);
+      if (o.userData.fig) { o.material = look.mode === 'bw' || !o.userData.col ? ORIG.get(o.geometry) : colMat(o.userData.col, true); return; }
+      o.material = look.mode === 'bw' ? WHITE : o.userData.col ? colMat(o.userData.col) : ORIG.get(o.geometry) || WHITE;
+    });
+  }
+  function layPanel(layers) {
+    const seg = el('div', { class: 'seg', role: 'group', 'aria-label': 'Production look' },
+      [['bw', 'Black & white'], ['col', 'Layer colours']].map(([m, n]) => el('button', { type: 'button', 'data-m': m, 'aria-pressed': String(look.mode === m), title: n + ' (C)', onclick: () => setLook(m) }, n)));
+    const list = layers.length > 1 ? el('details', { open: innerWidth > 560 }, el('summary', null, 'Layers', el('small', { text: String(layers.length) })),
+      el('ul', null, layers.map(([L, c]) => el('li', null, el('label', null,
+        el('input', { type: 'checkbox', checked: !look.off.has(L), 'data-l': L, onchange: e => { if (e.target.checked) look.off.delete(L); else look.off.add(L); applyLook(); } }),
+        el('i', { style: 'background:' + c }), el('span', { text: L, title: L })))))) : null;
+    $('s3lay').replaceChildren(seg, list || ''); $('s3lay').hidden = false;
+  }
+  function setLook(m) { look.mode = m; $('s3lay').querySelectorAll('.seg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.m === m))); applyLook(); }
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function flyTo(p, t, ms = 1600) {
+    fly = { p0: camera.position.clone(), t0: controls.target.clone(), p1: new THREE.Vector3(...p), t1: new THREE.Vector3(...t), s: performance.now(), ms: reduce ? 1 : ms };
+  }
+  controls.addEventListener('start', () => { fly = null; controls.autoRotate = false; mark(null); });
+  // a drag orbits or pans (shift flips it); on a touch screen one finger does the same and two fingers pan and pinch
+  let nav = 'orbit';
+  function setNav(m) {
+    nav = m;
+    controls.mouseButtons.LEFT = m === 'pan' ? THREE.MOUSE.PAN : THREE.MOUSE.ROTATE; controls.mouseButtons.RIGHT = m === 'pan' ? THREE.MOUSE.ROTATE : THREE.MOUSE.PAN;
+    controls.touches.ONE = m === 'pan' ? THREE.TOUCH.PAN : THREE.TOUCH.ROTATE;
+    $('s3nav').querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.n === m)));
+  }
+  const ico = d => { const v = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); v.setAttribute('viewBox', '0 0 16 16'); v.innerHTML = d; return v; };
+  $('s3nav').replaceChildren(
+    el('button', { type: 'button', 'data-n': 'orbit', title: 'Drag to orbit around the stage (O)', onclick: () => setNav('orbit') }, ico('<ellipse cx="8" cy="8" rx="6.5" ry="3"/><path d="M8 1.5v13"/>'), el('span', { text: 'Orbit' })),
+    el('button', { type: 'button', 'data-n': 'pan', title: 'Drag to slide the view (P)', onclick: () => setNav('pan') }, ico('<path d="M8 1.5v13M1.5 8h13M8 1.5 6 3.5M8 1.5l2 2M8 14.5l-2-2M8 14.5l2-2M1.5 8l2-2M1.5 8l2 2M14.5 8l-2-2M14.5 8l-2 2"/>'), el('span', { text: 'Pan' })));
+  setNav('orbit');
+  if (matchMedia('(pointer: coarse)').matches) $('s3tip').textContent = 'One finger to orbit (or pan) · two fingers to pan and zoom · double-tap to look at a spot · ';
+  // double-click or double-tap a spot: the view glides to look at it, a little closer
+  const ray = new THREE.Raycaster();
+  function lookAt(x, y) {
+    const r = renderer.domElement.getBoundingClientRect();
+    ray.setFromCamera(new THREE.Vector2((x - r.left) / r.width * 2 - 1, -(y - r.top) / r.height * 2 + 1), camera);
+    const hit = ray.intersectObjects(world.children, true).find(h => h.object.isMesh && h.object.visible);
+    if (!hit) return false;
+    const off = camera.position.clone().sub(controls.target), d = off.length(), nd = Math.min(d, Math.max(3, d * .6));
+    controls.autoRotate = false; mark(null);
+    flyTo(hit.point.clone().add(off.setLength(nd)).toArray(), hit.point.toArray(), 900);
+    return true;
+  }
+  renderer.domElement.addEventListener('dblclick', e => lookAt(e.clientX, e.clientY));
+  let tap = null;
+  renderer.domElement.addEventListener('pointerup', e => {
+    if (e.pointerType !== 'touch') return;
+    const now = performance.now();
+    if (tap && now - tap.t < 320 && Math.hypot(e.clientX - tap.x, e.clientY - tap.y) < 24) { tap = null; lookAt(e.clientX, e.clientY); }
+    else tap = { t: now, x: e.clientX, y: e.clientY };
+  });
+  function camOf(k) {
+    const c = cur && cur.scene.cams || {};
+    if (k === 'wide') {   // three-quarter view from front left, sized to the deck and the production (not the whole room)
+      const dk = cur.scene.deck || {}, tgt = [0, (dk.h || 1) + 1.5, -(dk.d || 8) / 2];
+      let span = Math.max(dk.w || 10, dk.d || 8);
+      if (cur.scene.size) { const [mn, mx] = cur.scene.size; tgt[0] = (mn[0] + mx[0]) / 2; tgt[1] = Math.max(tgt[1], (mn[1] + mx[1]) / 2); tgt[2] = (mn[2] + mx[2]) / 2; span = Math.max(span, mx[0] - mn[0], mx[2] - mn[2], mx[1] - mn[1]); }
+      const r = Math.min(Math.max(span * 1.55, 12), 120);
+      return [[tgt[0] - r * .62, tgt[1] + r * .5, tgt[2] + r * .78], tgt];
+    }
+    return c[k] || null;
+  }
+  // tall phone screens see less side to side: step back so the stage still fits across
+  const fitWide = (p, t) => { const k = camera.aspect < 1 ? Math.min(2.4, .9 / camera.aspect) : 1; return k === 1 ? p : p.map((x, i) => t[i] + (x - t[i]) * k); };
+  function go(k, ms) { const v = camOf(k); if (!v) return; view = k; controls.autoRotate = false; mark(k); flyTo(k === 'artist' ? v[0] : fitWide(v[0], v[1]), v[1], ms); }
+  function mark(k) { $('s3views').querySelectorAll('button[data-v]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === k))); }
+
+  $('s3views').replaceChildren(...VIEWS.map(([k, n], i) => el('button', { type: 'button', 'data-v': k, title: n + ' (' + (i + 1) + ')', onclick: () => go(k) }, n)),
+    el('button', { type: 'button', 'data-v': 'orbit', title: 'Fly around (0)', onclick: () => { fly = null; const on = !controls.autoRotate; controls.autoRotate = on; mark(on ? 'orbit' : null); } }, 'Fly around'));
+
+  // header: tour name, show picker, fit
+  // the chooser: "Stage design only" on top, then every venue in date order, with a search box on long tours
+  const nameOf = d => d.label || [d.day || d.date, d.venue].filter(Boolean).join(' · ');
+  const sel = el('button', { type: 'button', class: 'chooser', 'aria-haspopup': 'listbox', 'aria-expanded': 'false', title: 'Choose the stage design or a venue' });
+  const menu = el('div', { class: 'menu', hidden: true, role: 'listbox', 'aria-label': 'What to look at' });
+  const optOf = (d, i) => el('button', { type: 'button', class: 'opt', role: 'option', 'data-i': i, onclick: () => { closeMenu(); pick(i); } },
+    d.design ? [el('i', { class: 'ico', text: '◻' }), el('div', null, el('b', { text: 'Stage design only' }), el('span', { text: 'The production by itself, no venue around it' }))]
+      : [el('span', { class: 'when', text: (d.day || d.date || '').replace(/,? \d{4}$/, '') }), el('div', null, el('b', { text: d.venue || 'Venue' }), el('span', { text: d.city || '' })), d.fit && SEVN[d.fit.sev] ? el('i', { class: 'dot ' + d.fit.sev, title: SEVN[d.fit.sev] }) : null]);
+  const venueIx = shows.map((d, i) => d.design ? -1 : i).filter(i => i >= 0);
+  const find = venueIx.length > 8 ? el('input', { type: 'search', placeholder: 'Find a venue or city', 'aria-label': 'Find a venue or city' }) : null;
+  const list = el('div', { class: 'list' });
+  function fill() {
+    const q = find ? find.value.trim().toLowerCase() : '';
+    const rows = venueIx.filter(i => !q || [shows[i].venue, shows[i].city, shows[i].day].join(' ').toLowerCase().includes(q)).map(i => optOf(shows[i], i));
+    list.replaceChildren(...(rows.length ? rows : [el('p', { class: 'none', text: 'No venue matches.' })]));
+    menu.querySelectorAll('.opt').forEach(b => b.setAttribute('aria-current', String(+b.dataset.i === idx)));
+  }
+  if (find) find.oninput = fill;
+  menu.append(shows[0].design ? el('div', { class: 'mtop' }, optOf(shows[0], 0)) : '', venueIx.length ? el('p', { class: 'lab', text: venueIx.length === 1 ? 'Venue' : venueIx.length + ' venues' }) : '', find || '', list);
+  function openMenu() { fill(); menu.hidden = false; sel.setAttribute('aria-expanded', 'true'); (menu.querySelector('.opt[aria-current=true]') || find || menu.querySelector('.opt')).focus(); }
+  function closeMenu() { menu.hidden = true; sel.setAttribute('aria-expanded', 'false'); }
+  sel.onclick = () => menu.hidden ? openMenu() : closeMenu();
+  addEventListener('pointerdown', e => { if (!menu.hidden && !menu.contains(e.target) && !sel.contains(e.target)) closeMenu(); });
+  menu.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeMenu(); sel.focus(); e.stopPropagation(); }
+    else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      const os = [...menu.querySelectorAll('.opt')], k = os.indexOf(document.activeElement);
+      os[Math.max(0, Math.min(os.length - 1, k + (e.key === 'ArrowDown' ? 1 : -1)))]?.focus(); e.preventDefault(); e.stopPropagation();
+    }
+  });
+  const fitp = el('span', { class: 'fitp' });
+  $('s3hd').replaceChildren(
+    el('div', { class: 'ttl' }, el('small', { text: 'Venue Access · ' + ((data.tour || {}).artist || 'Tour') }), el('b', { text: (data.tour || {}).name || 'Tour' }), fitp),
+    el('div', { class: 'pick' }, shows.length > 1 ? el('button', { class: 'nav', type: 'button', 'aria-label': 'Previous', onclick: () => pick((idx - 1 + shows.length) % shows.length) }, '‹') : null, sel, menu,
+      shows.length > 1 ? el('button', { class: 'nav', type: 'button', 'aria-label': 'Next', onclick: () => pick((idx + 1) % shows.length) }, '›') : null));
+
+  async function pick(i, first) {
+    const my = ++job; idx = i; cur = shows[i]; sel.disabled = shows.length < 2;
+    sel.replaceChildren(el('small', { text: cur.design ? 'Showing' : 'Venue' }), cur.design ? 'Stage design only' : nameOf(cur));
+    const f = cur.fit; fitp.hidden = cur.design ? false : !f || !SEVN[f.sev];
+    if (cur.design) fitp.replaceChildren(venueIx.length ? 'The production by itself · choose a venue to see it in the room' : 'The stage design');
+    else if (f && SEVN[f.sev]) fitp.replaceChildren(el('i', { class: 'dot ' + f.sev }), SEVN[f.sev] + (cur.city ? ' · ' + cur.city : ''));
+    $('s3msg').hidden = false; $('s3msg').textContent = 'Loading the stage…';
+    try {
+      const sc = cur.scene, prod = cur.design ? cur.prod : sc.prod, at = cur.design ? cur.at : sc.at;
+      const [v, p] = await Promise.all([cur.design ? genericStage(sc) : load(sc.venue), prod ? load(prod) : null]);
+      if (my !== job) return;
+      world.clear(); world.add(cur.design ? v : v.clone());
+      prodG = null;
+      if (p) {
+        const layers = prep(p);
+        if (prod !== prodUrl) { prodUrl = prod; look.off = new Set([...look.off].filter(L => layers.some(x => x[0] === L))); layPanel(layers); }
+        const g = p.clone(); if (at) { g.matrixAutoUpdate = false; g.matrix.fromArray(at); } world.add(g); prodG = g; applyLook();
+      } else $('s3lay').hidden = true;
+      $('s3msg').hidden = true;
+      if (first) { const w = camOf('wide'), f2 = camOf('foh') || w; camera.position.set(w[0][0] * 1.8, w[0][1] * 1.6, w[0][2] * 1.8); controls.target.set(...w[1]); controls.update(); go(f2 === w ? 'wide' : 'foh', 2600); }
+      else go(camOf(view) ? view : 'foh', 1200);
+    } catch (e) { if (my === job) $('s3msg').textContent = "The 3D view couldn't load. Details are below."; console.info(e); }
+  }
+  window.__vaShow3d = id => { const i = shows.findIndex(d => d.id === id); if (i < 0) return; scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); pick(i); };
+  $('s3down').onclick = () => { $('details').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); };
+  addEventListener('keydown', e => {
+    if (e.target && /^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName) && e.target.type !== 'checkbox' || e.metaKey || e.ctrlKey || scrollY > host.offsetHeight / 2) return;
+    const n = +e.key;
+    if (n >= 1 && n <= VIEWS.length) go(VIEWS[n - 1][0]);
+    else if (e.key === '0') $('s3views').querySelector('[data-v=orbit]').click();
+    else if ((e.key === 'c' || e.key === 'C') && prodG) setLook(look.mode === 'bw' ? 'col' : 'bw');
+    else if (e.key === 'p' || e.key === 'P') setNav('pan');
+    else if (e.key === 'o' || e.key === 'O') setNav('orbit');
+    else if (e.key === 'ArrowRight' && shows.length > 1) pick((idx + 1) % shows.length);
+    else if (e.key === 'ArrowLeft' && shows.length > 1) pick((idx - 1 + shows.length) % shows.length);
+  });
+
+  // draw only while the stage is on screen
+  let onScreen = true;
+  new IntersectionObserver(es => { onScreen = es[0].isIntersecting; }).observe(host);
+  renderer.setAnimationLoop(now => {
+    if (!onScreen) return;
+    if (fly) {
+      const k = Math.min(1, (now - fly.s) / fly.ms), t = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+      camera.position.lerpVectors(fly.p0, fly.p1, t); controls.target.lerpVectors(fly.t0, fly.t1, t);
+      if (k >= 1) fly = null;
+    }
+    controls.update(); renderer.render(scene, camera);
+  });
+  window.__va3d = { pick: i => pick(i), go, state: () => {
+    const pr = { meshes: 0, shown: 0, white: 0, edges: 0, cols: new Set() };
+    if (prodG) prodG.traverse(o => { if (o.userData.edge) { if (o.visible && o.parent.visible) pr.edges++; } else if (o.isMesh) { pr.meshes++; if (o.visible) { pr.shown++; if (o.material === WHITE) pr.white++; else pr.cols.add(o.material.color.getHexString()); } } });
+    return { show: cur && cur.id, view, flying: !!fly, objects: world.children.length, cam: camera.position.toArray().map(v => +v.toFixed(2)), mode: look.mode, off: [...look.off], nav, target: controls.target.toArray().map(v => +v.toFixed(2)), prod: { ...pr, cols: [...pr.cols] } };
+  } };
+  pick(0, true);
+}
+if (window.__vaShareData) start(window.__vaShareData); else addEventListener('va-share-ready', e => start(e.detail), { once: true });
+</script>
+</body>
+</html>
